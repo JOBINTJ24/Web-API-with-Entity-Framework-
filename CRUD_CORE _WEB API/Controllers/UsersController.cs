@@ -54,5 +54,14 @@ namespace CRUD_CORE__WEB_API.Controllers
             }
            
         }
+        [HttpPut]
+        [Route("update")]
+        public string Update(User user)
+        {
+            UserContest.Entry(user).State =Microsoft.EntityFrameworkCore.EntityState.Modified;
+            UserContest.SaveChanges();
+            return "user updated";
+        }
+
     }
 }
