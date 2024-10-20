@@ -141,3 +141,4 @@ C:\C#_Projects\CRUD_CORE _WEB API\CRUD_CORE _WEB API\obj\Debug\net8.0\refint\CRU
 C:\C#_Projects\CRUD_CORE _WEB API\CRUD_CORE _WEB API\obj\Debug\net8.0\CRUD_CORE _WEB API.pdb
 C:\C#_Projects\CRUD_CORE _WEB API\CRUD_CORE _WEB API\obj\Debug\net8.0\CRUD_CORE _WEB API.genruntimeconfig.cache
 C:\C#_Projects\CRUD_CORE _WEB API\CRUD_CORE _WEB API\obj\Debug\net8.0\ref\CRUD_CORE _WEB API.dll
+C:\C#_Projects\CRUD_CORE _WEB API\CRUD_CORE _WEB API\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll

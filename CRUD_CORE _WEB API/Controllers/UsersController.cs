@@ -1,4 +1,5 @@
 ﻿using CRUD_CORE__WEB_API.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -13,8 +14,11 @@ namespace CRUD_CORE__WEB_API.Controllers
         {
             this.UserContest = UserContest;
         }
+
+
         [HttpGet]
         [Route("Getusers")]
+        [Authorize]
         public List<User> GetUsers()
         {
             return UserContest.Users.ToList();
