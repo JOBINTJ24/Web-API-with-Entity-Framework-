@@ -24,6 +24,7 @@ namespace CRUD_CORE__WEB_API.Controllers
             return UserContest.Users.ToList();
         }
         [HttpGet]
+        [Authorize]
         [Route("GetusersById")]
         public User GetUsersId(int id)
         {
@@ -32,6 +33,7 @@ namespace CRUD_CORE__WEB_API.Controllers
 
         [HttpPost]
         [Route("Adduser")]
+        [Authorize]
         public string Adduser(User user)
         {
             string response =string.Empty;
@@ -42,6 +44,7 @@ namespace CRUD_CORE__WEB_API.Controllers
 
         [HttpDelete]
         [Route("Deleters")]
+        [Authorize]
         public string Deleteuser(int id)
         {
             User user = UserContest.Users.Where(x => x.Id == id).FirstOrDefault();
@@ -60,6 +63,7 @@ namespace CRUD_CORE__WEB_API.Controllers
         }
         [HttpPut]
         [Route("update")]
+        [Authorize]
         public string Update(User user)
         {
             UserContest.Entry(user).State =Microsoft.EntityFrameworkCore.EntityState.Modified;

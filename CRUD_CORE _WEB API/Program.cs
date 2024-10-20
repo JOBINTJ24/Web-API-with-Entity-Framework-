@@ -15,6 +15,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+// jwt token authentication
 builder.Services.AddAuthentication(options=>
 {
     options.DefaultAuthenticateScheme= JwtBearerDefaults.AuthenticationScheme;
