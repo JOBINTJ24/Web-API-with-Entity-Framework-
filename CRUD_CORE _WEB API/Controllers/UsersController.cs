@@ -1,7 +1,9 @@
 ﻿using CRUD_CORE__WEB_API.Models;
+using CRUD_CORE__WEB_API.Request;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore.Metadata.Conventions;
 
 namespace CRUD_CORE__WEB_API.Controllers
 {
@@ -18,7 +20,6 @@ namespace CRUD_CORE__WEB_API.Controllers
 
         [HttpGet]
         [Route("Getusers")]
-        [Authorize]
         public List<User> GetUsers()
         {
             return UserContest.Users.ToList();
@@ -33,13 +34,13 @@ namespace CRUD_CORE__WEB_API.Controllers
 
         [HttpPost]
         [Route("Adduser")]
-        [Authorize]
-        public string Adduser(User user)
+       // [Authorize]
+        public IActionResult Adduser([FromBody] User user)
         {
             string response =string.Empty;
             UserContest.Users.Add(user);
             UserContest.SaveChanges();
-            return "Add user";
+            return Ok(new { message = "User added" });
         }
 
         [HttpDelete]
@@ -69,6 +70,18 @@ namespace CRUD_CORE__WEB_API.Controllers
             UserContest.Entry(user).State =Microsoft.EntityFrameworkCore.EntityState.Modified;
             UserContest.SaveChanges();
             return "user updated";
+        }
+        [HttpPost]
+        [Route("Login")]
+       // [Authorize]
+        public IActionResult Login(LoginRequest obj)
+        {
+            var user = UserContest.Users.SingleOrDefault(m => m.Name == obj.Name && m.Password == obj.Password);
+            if (user != null)
+            {
+                return Ok(new { message = "success" });
+            }
+            return Unauthorized(new { message = "Invalid username or password" });
         }
 
     }
